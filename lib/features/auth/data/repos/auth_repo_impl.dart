@@ -54,4 +54,56 @@ class AuthRepoImpl extends AuthRepo {
       );
     }
   }
+
+  @override
+  Future<Either<Failure, UserEntity>> signInWithGoogle() async {
+    try {
+      var user = await firebaseAuthService.signInWithGoogle();
+      return right(UserModel.fromFirebaseUser(user));
+    } catch (e) {
+      log(
+        'Exception in AuthRepoImpl.signInWithGoogle: ${e.toString()}',
+      );
+      return left(
+        const ServerFailure(
+          'لقد حدث خطأ الآن, يرجى المحاولة مرة أخرى.',
+        ),
+      );
+    }
+  }
+
+  /// تسجيل دخول فيس بوك محظور عندي
+
+  // @override
+  // Future<Either<Failure, UserEntity>> signInWithFacebook() async {
+  //   try {
+  //     var user = await firebaseAuthService.signInWithFacebook();
+  //     return right(UserModel.fromFirebaseUser(user));
+  //   } catch (e) {
+  //     log(
+  //       'Exception in AuthRepoImpl.signInWithFacebook: ${e.toString()}',
+  //     );
+  //     return left(
+  //       const ServerFailure(
+  //         'لقد حدث خطأ الآن, يرجى المحاولة مرة أخرى.',
+  //       ),
+  //     );
+  //   }
+  // }
+  @override
+  Future<Either<Failure, UserEntity>> signInWithApple() async {
+    try {
+      var user = await firebaseAuthService.signInWithApple();
+      return right(UserModel.fromFirebaseUser(user));
+    } catch (e) {
+      log(
+        'Exception in AuthRepoImpl.signInWithApple: ${e.toString()}',
+      );
+      return left(
+        const ServerFailure(
+          'لقد حدث خطأ الآن, يرجى المحاولة مرة أخرى.',
+        ),
+      );
+    }
+  }
 }

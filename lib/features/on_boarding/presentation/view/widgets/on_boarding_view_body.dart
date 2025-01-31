@@ -50,6 +50,7 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
             activeColor: AppColors.primaryColor,
             color: currentPage == 1
                 ? AppColors.primaryColor
+                // ignore: deprecated_member_use
                 : AppColors.primaryColor.withOpacity(0.5),
           ),
         ),

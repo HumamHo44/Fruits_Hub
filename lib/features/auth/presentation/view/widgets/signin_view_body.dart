@@ -25,9 +25,9 @@ class _SignInViewBodyState extends State<SignInViewBody> {
   late String email, password;
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: kHorizontalPadding),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: kHorizontalPadding),
+      child: SingleChildScrollView(
         child: Form(
           key: formKey,
           autovalidateMode: autovalidateMode,
@@ -38,8 +38,8 @@ class _SignInViewBodyState extends State<SignInViewBody> {
                 height: 24,
               ),
               CustomTextFormField(
-                onSaved: (valu) {
-                  email = valu!;
+                onSaved: (value) {
+                  email = value!;
                 },
                 hintText: 'البريد الالكتروني',
                 textInputType: TextInputType.emailAddress,
@@ -47,8 +47,8 @@ class _SignInViewBodyState extends State<SignInViewBody> {
               const SizedBox(
                 height: 16,
               ),
-              PasswordField(onSaved: (valu) {
-                password = valu!;
+              PasswordField(onSaved: (value) {
+                password = value!;
               }),
               const SizedBox(
                 height: 16,
@@ -91,7 +91,9 @@ class _SignInViewBodyState extends State<SignInViewBody> {
                 height: 16,
               ),
               SocialLoginButton(
-                onPressed: () {},
+                onPressed: () {
+                  context.read<SigninCubit>().signInWithGoogle();
+                },
                 title: 'تسجيل بواسطة جوجل',
                 image: Assets.imagesGoogleIcon,
               ),
@@ -99,7 +101,9 @@ class _SignInViewBodyState extends State<SignInViewBody> {
                 height: 16,
               ),
               SocialLoginButton(
-                onPressed: () {},
+                onPressed: () {
+                  context.read<SigninCubit>().signInWithApple();
+                },
                 title: 'تسجيل بواسطة أبل',
                 image: Assets.imagesApplIcon,
               ),
@@ -107,7 +111,10 @@ class _SignInViewBodyState extends State<SignInViewBody> {
                 height: 16,
               ),
               SocialLoginButton(
-                onPressed: () {},
+                onPressed: () {
+                  /// تسجيل دخول فيس بوك محظور عندي
+                  // context.read<SigninCubit>().signInWithFacebook();
+                },
                 title: 'تسجيل بواسطة فيسبوك',
                 image: Assets.imagesFacebookIcon,
               ),
