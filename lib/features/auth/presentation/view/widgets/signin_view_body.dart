@@ -1,44 +1,55 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruits_hub/constants.dart';
 import 'package:fruits_hub/core/utils/app_colors.dart';
 import 'package:fruits_hub/core/utils/app_images.dart';
 import 'package:fruits_hub/core/utils/app_text_styles.dart';
 import 'package:fruits_hub/core/widgets/custom_button.dart';
+import 'package:fruits_hub/core/widgets/custom_password_field.dart';
 import 'package:fruits_hub/core/widgets/custom_text_form_field.dart';
+import 'package:fruits_hub/features/auth/presentation/cubits/signin_cubits/signin_cubit.dart';
 import 'package:fruits_hub/features/auth/presentation/view/widgets/dont_have_an_account_widget.dart';
 import 'package:fruits_hub/features/auth/presentation/view/widgets/or_divider.dart';
 import 'package:fruits_hub/features/auth/presentation/view/widgets/social_login_button.dart';
 
-class LoginViewBody extends StatelessWidget {
-  const LoginViewBody({super.key});
+class SignInViewBody extends StatefulWidget {
+  const SignInViewBody({super.key});
 
+  @override
+  State<SignInViewBody> createState() => _SignInViewBodyState();
+}
+
+class _SignInViewBodyState extends State<SignInViewBody> {
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
+  late String email, password;
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: kHorizontalPadding),
-        child: SingleChildScrollView(
+        child: Form(
+          key: formKey,
+          autovalidateMode: autovalidateMode,
           child: Column(
             // crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               const SizedBox(
                 height: 24,
               ),
-              const CustomTextFormField(
+              CustomTextFormField(
+                onSaved: (valu) {
+                  email = valu!;
+                },
                 hintText: 'البريد الالكتروني',
                 textInputType: TextInputType.emailAddress,
               ),
               const SizedBox(
                 height: 16,
               ),
-              const CustomTextFormField(
-                suffixIcon: Icon(
-                  Icons.remove_red_eye,
-                  color: Color(0xFFC9CECF),
-                ),
-                hintText: 'كلمة المرور',
-                textInputType: TextInputType.visiblePassword,
-              ),
+              PasswordField(onSaved: (valu) {
+                password = valu!;
+              }),
               const SizedBox(
                 height: 16,
               ),
@@ -56,7 +67,18 @@ class LoginViewBody extends StatelessWidget {
               const SizedBox(
                 height: 32,
               ),
-              CustomButton(onPressed: () {}, text: 'تسجيل الدخول'),
+              CustomButton(
+                  onPressed: () {
+                    if (formKey.currentState!.validate()) {
+                      formKey.currentState!.save();
+
+                      context.read<SigninCubit>().signIn(email, password);
+                    } else {
+                      autovalidateMode = AutovalidateMode.always;
+                      setState(() {});
+                    }
+                  },
+                  text: 'تسجيل الدخول'),
               const SizedBox(
                 height: 32,
               ),

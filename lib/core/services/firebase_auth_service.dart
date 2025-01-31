@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fruits_hub/core/errors/exceptions.dart';
 
@@ -28,16 +30,59 @@ class FirebaseAuthService {
       );
       return credential.user!;
     } on FirebaseAuthException catch (e) {
+      log(
+        " Exception in FirebaseAuthService.createUserWithEmailAndPassword: ${e.toString()} and code is ${e.code} ",
+      );
       if (e.code == 'weak-password') {
-        throw CustomException(message: 'The password provided is too weak.');
+        throw CustomException(message: 'الرقم السري ضعيف جدًا.');
       } else if (e.code == 'email-already-in-use') {
         throw CustomException(
-            message: 'The account already exists for that email.');
+            message: 'لقد قمت بالتسجل مسبقًا , يرجى تسجيل الدخول.');
+      } else if (e.code == 'network-request-failed') {
+        throw CustomException(message: 'تاكد من اتصالك بالانترنت');
       } else {
-        throw CustomException(message: ' An error occurred, please try again.');
+        throw CustomException(
+            message: ' لقد حدث خطأ الآن, يرجى المحاولة مرة أخرى.');
       }
     } catch (e) {
-      throw CustomException(message: ' An error occurred, please try again.');
+      log(
+        " Exception in FirebaseAuthService.createUserWithEmailAndPassword: ${e.toString()}",
+      );
+      throw CustomException(
+          message: ' لقد حدث خطأ الآن, يرجى المحاولة مرة أخرى.');
+    }
+  }
+
+  Future<User> signInWithEmailAndPassword(
+      {required String email, required String password}) async {
+    try {
+      final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+      return credential.user!;
+    } on FirebaseAuthException catch (e) {
+      log(
+        " Exception in FirebaseAuthService.signInWithEmailAndPassword: ${e.toString()} and code is ${e.code} ",
+      );
+      if (e.code == 'user-not-found') {
+        throw CustomException(
+            message: 'البريد الالكتروني او الرقم السري غير صحيح');
+      } else if (e.code == 'wrong-password') {
+        throw CustomException(
+            message: 'البريد الالكتروني او الرقم السري غير صحيح');
+      } else if (e.code == 'network-request-failed') {
+        throw CustomException(message: 'تاكد من اتصالك بالانترنت');
+      } else {
+        throw CustomException(
+            message: ' لقد حدث خطأ الآن, يرجى المحاولة مرة أخرى.');
+      }
+    } catch (e) {
+      log(
+        " Exception in FirebaseAuthService.signInWithEmailAndPassword: ${e.toString()}",
+      );
+      throw CustomException(
+          message: ' لقد حدث خطأ الآن, يرجى المحاولة مرة أخرى.');
     }
   }
 }
