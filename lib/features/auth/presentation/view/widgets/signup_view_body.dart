@@ -71,9 +71,7 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
                   if (formKey.currentState!.validate()) {
                     formKey.currentState!.save();
                     if (isTermsAccepted) {
-                      context
-                          .read<SignUpCubit>()
-                          .signUp(email, userName, password);
+                      context.read<SignUpCubit>().signUp(email, password);
                     } else {
                       buildErrorBar(
                         context,
