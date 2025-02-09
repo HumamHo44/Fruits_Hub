@@ -20,6 +20,7 @@ abstract class AuthRepo {
   /// تسجيل دخول فيس بوك محظور عندي
 
   // Future<Either<Failure, UserEntity>> signInWithFacebook();
+  Future addUserData({required UserEntity user});
 
   Future<Either<Failure, UserEntity>> signInWithApple();
 }
