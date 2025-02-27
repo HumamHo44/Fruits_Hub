@@ -10,7 +10,7 @@ abstract class AuthRepo {
   /// created user if successful.
 
   Future<Either<Failure, UserEntity>> createUserWithEmailAndPassword(
-      String email, String password);
+      String email, String password, String name);
 
   Future<Either<Failure, UserEntity>> signinWithEmailAndPassword(
       String email, String password);
@@ -21,6 +21,7 @@ abstract class AuthRepo {
 
   // Future<Either<Failure, UserEntity>> signInWithFacebook();
   Future addUserData({required UserEntity user});
+  Future<UserEntity> getUserData({required String uid});
 
   Future<Either<Failure, UserEntity>> signInWithApple();
 }

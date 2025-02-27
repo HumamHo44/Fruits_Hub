@@ -11,6 +11,7 @@ class CustomBlocObserver extends BlocObserver {
     log('${bloc.runtimeType} $transition');
   }
 
+  @override
   void onChange(BlocBase bloc, Change change) {
     super.onChange(bloc, change);
     if (kDebugMode) {

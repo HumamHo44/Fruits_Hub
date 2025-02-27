@@ -8,7 +8,7 @@ import 'package:get_it/get_it.dart';
 final getIt = GetIt.instance;
 void setupGetIt() {
   getIt.registerSingleton<FirebaseAuthService>(FirebaseAuthService());
-  getIt.registerSingleton<DatabaseService>(FirestorServices());
+  getIt.registerSingleton<DatabaseService>(FireStorServices());
 
   getIt.registerSingleton<AuthRepo>(
     AuthRepoImpl(

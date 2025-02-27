@@ -1,3 +1,15 @@
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+
+    dependencies {
+        // إضافة أو تحديث السطر التالي:
+        classpath 'com.android.tools.build:gradle:8.2.1'  // تأكد من تحديث النسخة إذا كانت قديمة.
+    }
+}
+
 allprojects {
     repositories {
         google()
