@@ -38,7 +38,7 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
               const SizedBox(height: 24),
               CustomTextFormField(
                 onSaved: (valu) {
-                  userName = valu!;
+                  userName = valu!.trim();
                 },
                 hintText: 'الاسم كامل',
                 textInputType: TextInputType.name,
@@ -46,7 +46,7 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
               const SizedBox(height: 16),
               CustomTextFormField(
                 onSaved: (valu) {
-                  email = valu!;
+                  email = valu!.trim();
                 },
                 hintText: 'البريد الالكتروني',
                 textInputType: TextInputType.emailAddress,
@@ -54,7 +54,7 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
               const SizedBox(height: 16),
               PasswordField(
                 onSaved: (valu) {
-                  password = valu!;
+                  password = valu!.trim();
                 },
               ),
               const SizedBox(height: 16),

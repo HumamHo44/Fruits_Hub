@@ -1,0 +1,2 @@
+/Volumes/SSDHUMAM/Users/humam/flutter project/fruits_hub/android/app/.cxx/Debug/6k33p2k1/armeabi-v7a/CMakeFiles/edit_cache.dir
+/Volumes/SSDHUMAM/Users/humam/flutter project/fruits_hub/android/app/.cxx/Debug/6k33p2k1/armeabi-v7a/CMakeFiles/rebuild_cache.dir

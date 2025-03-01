@@ -39,7 +39,7 @@ class _SignInViewBodyState extends State<SignInViewBody> {
               ),
               CustomTextFormField(
                 onSaved: (value) {
-                  email = value!;
+                  email = value!.trim();
                 },
                 hintText: 'البريد الالكتروني',
                 textInputType: TextInputType.emailAddress,
@@ -48,7 +48,7 @@ class _SignInViewBodyState extends State<SignInViewBody> {
                 height: 16,
               ),
               PasswordField(onSaved: (value) {
-                password = value!;
+                password = value!.trim();
               }),
               const SizedBox(
                 height: 16,
