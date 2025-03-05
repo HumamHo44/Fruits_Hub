@@ -17,7 +17,7 @@ class CustomHomeAppBar extends StatelessWidget {
         ),
         child: SvgPicture.asset(Assets.imagesNotification),
       ),
-      leading: SvgPicture.asset(Assets.imagesProFileImage),
+      leading: Image.asset(Assets.imagesProFileImage),
       title: Text(
         'صباح الخير !..',
         textAlign: TextAlign.right,
