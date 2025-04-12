@@ -10,6 +10,22 @@ class Assets {
   /// assets/images/appl_icon.svg
   static const String imagesApplIcon = "assets/images/appl_icon.svg";
 
+  /// Assets for imagesBoldHome
+  /// assets/images/bold/home.svg
+  static const String imagesBoldHome = "assets/images/bold/home.svg";
+
+  /// Assets for imagesBoldProducts
+  /// assets/images/bold/products.svg
+  static const String imagesBoldProducts = "assets/images/bold/products.svg";
+
+  /// Assets for imagesBoldShopping
+  /// assets/images/bold/shopping.svg
+  static const String imagesBoldShopping = "assets/images/bold/shopping.svg";
+
+  /// Assets for imagesBoldUser
+  /// assets/images/bold/user.svg
+  static const String imagesBoldUser = "assets/images/bold/user.svg";
+
   /// Assets for imagesCheck
   /// assets/images/check.svg
   static const String imagesCheck = "assets/images/check.svg";
@@ -41,6 +57,22 @@ class Assets {
   /// Assets for imagesNotification
   /// assets/images/notification.svg
   static const String imagesNotification = "assets/images/notification.svg";
+
+  /// Assets for imagesOutlineHome
+  /// assets/images/outline/home.svg
+  static const String imagesOutlineHome = "assets/images/outline/home.svg";
+
+  /// Assets for imagesOutlineProducts
+  /// assets/images/outline/products.svg
+  static const String imagesOutlineProducts = "assets/images/outline/products.svg";
+
+  /// Assets for imagesOutlineShoppingCart
+  /// assets/images/outline/shopping-cart.svg
+  static const String imagesOutlineShoppingCart = "assets/images/outline/shopping-cart.svg";
+
+  /// Assets for imagesOutlineUser
+  /// assets/images/outline/user.svg
+  static const String imagesOutlineUser = "assets/images/outline/user.svg";
 
   /// Assets for imagesPageViewItem1BackgroundImage
   /// assets/images/page_view_item1_background_image.svg
